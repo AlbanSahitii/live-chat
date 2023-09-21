@@ -1,10 +1,11 @@
 import { websocket } from "../websocket.js";
+import React, { useState } from "react";
 
 // websocket();
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -17,20 +18,45 @@ const LoginForm = () => {
   };
 
   const handleSubmit = (e) => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const body = { email, password };
+    console.log(body);
     e.preventDefault();
-    // Add your login logic here
+    fetch("http://localhost:8080/login", {
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+      body: JSON.stringify(body),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error("API request failed");
+        }
+      })
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
     console.log("Login data:", formData);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="login-form" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="email">email:</label>
         <input
-          type="text"
-          id="username"
-          name="username"
-          value={formData.username}
+          type="email"
+          id="email"
+          name="email"
+          value={formData.email}
           onChange={handleChange}
           required
         />

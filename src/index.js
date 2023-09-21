@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import Login from "./components/login.js";
+import Register from "./components/register.js";
 import reportWebVitals from "./reportWebVitals";
+import { Route, Routes } from "react-router";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <Login />
-  </React.StrictMode>
+  <Routes>
+    <Route path="/login" component={<Login />} />
+    <Route path="/register" component={<Register />} />
+  </Routes>
 );
 
 // If you want to start measuring performance in your app, pass a function
