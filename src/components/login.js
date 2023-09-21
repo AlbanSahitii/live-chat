@@ -39,7 +39,7 @@ const LoginForm = () => {
         }
       })
       .then((data) => {
-        console.log(data);
+        localStorage.setItem("jwt", data.jwt);
       })
       .catch((error) => {
         console.error(error);

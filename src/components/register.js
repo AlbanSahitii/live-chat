@@ -68,7 +68,7 @@ const RegisterForm = () => {
       <div>
         <label htmlFor="username">username:</label>
         <input
-          type="email"
+          type="text"
           id="username"
           name="username"
           value={formData.username}
