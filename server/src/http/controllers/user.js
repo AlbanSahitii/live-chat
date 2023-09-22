@@ -40,6 +40,19 @@ router.post("/register", async (req, res) => {
       .send({ message: "Email and/or password is invalid" });
   }
 });
+router.get("/:username", async (req, res) => {
+  const username = req.params.username;
+
+  try {
+    const result = await Users.find({
+      username: { $regex: ".*" + username + ".*" },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+
+  res.send(result);
+});
 
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
