@@ -1,0 +1,14 @@
+.search-profile-div {
+  display: inline-block;
+  width: 20%;
+  height: 100vh;
+  background-color: yellow;
+}
+
+.profiles-div {
+  margin: 10px;
+}
+
+.profiles-div > button {
+  margin-left: 20px;
+}

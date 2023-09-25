@@ -1,0 +1,12 @@
+.chat-div {
+  width: 80%;
+  height: 100vh;
+  float: right;
+  background-color: red;
+}
+
+.username-search-page {
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+}
